@@ -191,17 +191,17 @@ export function Builder() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-gray-900 flex flex-col">
-      <header className="bg-gray-800 border-b border-gray-700 px-6 py-4">
-        <h1 className="text-xl font-semibold text-gray-100">Website Builder</h1>
-        <p className="text-sm text-gray-400 mt-1">Prompt: {prompt}</p>
+    <div className="min-h-screen bg-black flex flex-col">
+      <header className="bg-gray-950 border-b border-gray-700 px-6 py-2">
+        <h1 className="text-xl font-semibold text-gray-100">TextWeb</h1>
+        <p className="text-sm text-gray-400 mt-1"> {prompt}</p>
       </header>
       
-      <div className="flex-1 overflow-hidden">
-        <div className="h-full grid grid-cols-4 gap-6 p-6">
+      <div className="flex-1 overflow-hidden ">
+        <div className="h-full grid grid-cols-4 gap-4 p-6 pt-0 ">
           <div className="col-span-1 space-y-6 overflow-auto">
             <div>
-              <div className="max-h-[75vh] overflow-scroll">
+              <div className="max-h-[75vh] overflow-x-hidden overflow-y-auto bg-gray-950">
                 <StepsList
                   steps={steps}
                   currentStep={currentStep}
@@ -212,10 +212,10 @@ export function Builder() {
                 <div className='flex'>
                   <br />
                   {(loading || !templateSet) && <Loader />}
-                  {!(loading || !templateSet) && <div className='flex'>
+                  {!(loading || !templateSet) && <div className='flex py-2 rounded-xl'>
                     <textarea value={userPrompt} onChange={(e) => {
                     setPrompt(e.target.value)
-                  }} className='p-2 w-full'></textarea>
+                  }} className='p-1 w-full bg-slate-950 text-white'></textarea>
                   <button onClick={async () => {
                     const newMessage = {
                       role: "user" as "user",
@@ -239,7 +239,7 @@ export function Builder() {
                       status: "pending" as "pending"
                     }))]);
 
-                  }} className='bg-purple-400 px-4'>Send</button>
+                  }} className='bg-purple-400 px-2'>Send</button>
                   </div>}
                 </div>
               </div>
